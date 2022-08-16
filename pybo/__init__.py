@@ -27,7 +27,8 @@ from flask import Flask
 
 ## ORM 적용 후
 from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy ## 얘는 Python Code로 SQL 할 수 있게 해주는 녀석임
+
 
 import config
 
@@ -41,6 +42,13 @@ def create_app() :
     ### ORM
     db.init_app(app)
     migrate.init_app(app, db) ## app에 db 등록!!
+    ## 여기가 새로 추가됨 (model import)##
+    from . import models 
+    ## 이후 (Terminal) flask db migrate
+    ## 이후 (Terminal) flask db upgrade => pybo.db 생성
+    ## 이후 SQLite 깔아서 db 까지 확인
+    ## 이후 (Terminal) flask shell 실행
+
 
     ## 블루 프린트 !!
     from .views import main_views
@@ -48,7 +56,12 @@ def create_app() :
 
     return app
 
-''' DB 초기화부터 다시 하기'''
+##(Terminal)flask db init으로 migrations 폴더 생성##
+## 굳이 얘네들에 대해 알 필요는 없음 ##
 
-
+'''
+꼭 알아야 하는 DB 관리 명령어
+flask db migrate : 모델을 새로 생성 및 변경할 때 사용
+flask db upgrade : 모델의 변경 내용을 실제 db에 적용할 때
+'''
 
