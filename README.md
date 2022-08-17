@@ -23,17 +23,21 @@ Python (So Obviously)
 # What I learned from this book (Flask) :blue_book:  
 **1. Basic Things of Flask**  
 - We have to run flask  _at project directory_
-- Role of create_app()
-- Role and Usage of Blue Print
+- Role of _create_app()_
+- Role and Usage of _Blue Print_
 - DB Connecting with model, ORM, SQLite
 - DB Modification, Update and Inquire with Python Codes (But I think I will prefer SQL..)
-- Setting DB's Type and Key Setting and Relationship Between Tables
-  
+- Setting DB's Type and Key Setting and Relationship Between Tables  
+
+    **8.17**
 - Template Tags that are ofren used in Flask (if, for, object) 
 - 200 : Success | 500 : Internal Server Error(it means my code's somewhere is wrong...) | 404 : Not Found (it means I should make codes about other cases..!)
+- Role and Usage of _redirect_
+- Role and Usage of _url_for()_ (Very Useful)
+- Role of _request_ (I wonder if is almost same with request function of Crawling)
 
-
-# What I learned from this boos (Miscellaneous) 
+  
+# What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
 
