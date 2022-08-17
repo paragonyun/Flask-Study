@@ -1,0 +1,14 @@
+<!-- 질문 목록 -->
+<!-- 퍼센트가 바로 템플릿 !! -->
+{% if question_list %} <!--question_list가 들어왔는지 확인 -->
+    <ul>
+    {% for question in question_list %} <!-- list 반복문 -->
+        <!-- url_for로 url을 직접 넣는 게 아니라 bp의 라우팅으로 url을 접속하게 바꿈-->
+        <li><a href = "{{ url_for('question.detail', question_id = question.id) }}">{{ question.subject }}</a></li>
+        <!-- 각 객체의 id, subject를 가져옴 -->
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}

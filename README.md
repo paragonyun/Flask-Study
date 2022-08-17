@@ -28,3 +28,16 @@ Python (So Obviously)
 - DB Connecting with model, ORM, SQLite
 - DB Modification, Update and Inquire with Python Codes (But I think I will prefer SQL..)
 - Setting DB's Type and Key Setting and Relationship Between Tables
+  
+- Template Tags that are ofren used in Flask (if, for, object) 
+- 200 : Success | 500 : Internal Server Error(it means my code's somewhere is wrong...) | 404 : Not Found (it means I should make codes about other cases..!)
+
+
+# What I learned from this boos (Miscellaneous) 
+**1. HTML**
+- If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
+
+
+**n. Hibbit**
+- READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 
+- If the function is different, it is better to seperate them by module. It will be easier to maintain projects!! 
