@@ -1,10 +1,15 @@
-<!--질문 제목과 내용을 표시해줌!!  -->
+
+<!--
+<! 이건 css 적용>
+<link rel = "stylesheet" href="{{ url_for('static', filename='style.css')}}">
+
+<!질문 제목과 내용을 표시해줌!!  >
 <h1>{{ question.subject }}</h1>
 <div>
     {{ question.content }}
 </div>
 
-<!-- 답변은 질문 밑에 표시돼야 하므로 여기에다가 표시 -->
+<! 답변은 질문 밑에 표시돼야 하므로 여기에다가 표시 >
 <h5>{{ question.answer_set|length}}개의 답변이 있습니다.</h5>
 <div>
     <ul>
@@ -15,10 +20,14 @@
 </div>
 
 
-<!-- 답변 저장을 위한 엘리먼트-->
+<! 답변 저장을 위한 엘리먼트>
 <form action = "{{ url_for('answer.create', question_id = question.id) }}" method = "post">
     <textarea name="'content" id ='content', rows="'15"></textarea>
     <input type = "submit" value="답변등록">
-    <!-- 답변등록 버튼을 우르면 URL이 호출됨 -->
+    <! 답변등록 버튼을 우르면 URL이 호출됨 >
 </form>
 
+-->
+
+
+<!-- 부트스트랩 적용 후 -->

@@ -31,11 +31,16 @@ Python (So Obviously)
 
     **8.17**
 - Template Tags that are ofren used in Flask (if, for, object) 
-- 200 : Success | 500 : Internal Server Error(it means my code's somewhere is wrong...) | 404 : Not Found (it means I should make codes about other cases..!)
+- 200 : Success   
+  500 : Internal Server Error(it means my code's somewhere is wrong...)   
+  404 : Not Found (it means I should make codes about other cases..!)  
 - Role and Usage of _redirect_
 - Role and Usage of _url_for()_ (Very Useful)
 - Role of _request_ (I wonder if is almost same with request function of Crawling)
 
+    **8.19**
+- Adjust Design with _CSS_ 
+- Design Web Page more easier with _Bootstrap_ !! 
   
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
