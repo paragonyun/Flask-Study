@@ -1,4 +1,6 @@
-textarea {
+/* 부트스트랩으로 필요가 없어지니 일단 주석 처리 
+
+/*textarea {
     width : 50%;
     height: 50%;
 }

@@ -41,12 +41,26 @@ Python (So Obviously)
     **8.19**
 - Adjust Design with _CSS_ 
 - Design Web Page more easier with _Bootstrap_ !! 
-  
+
+
+    **8.20**
+- It is so AMAZNG to desing with _"card component" of Boostrap_
+  - I think I should organize list of bootstrap's classes..! So useful!
+- How to change of template file to standard HTML structure.
+
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
 
+  **8.20**
+- There are _Standard of HTML_
+  - HTML structure should have _html, head, body element_ and css file link should be in _head element_ 
+  - Flask provide to us for changing of template to HTML Standard !!
 
 **n. Hibbit**
 - READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 
 - If the function is different, it is better to seperate them by module. It will be easier to maintain projects!! 
+
+# What I want to KNOW :grey_question:
+- I don't know why I get messages like _""GET /static/bootstrap.min.css HTTP/1.1" 304 -"_ or _""GET /static/style.css HTTP/1.1" 304 -"_

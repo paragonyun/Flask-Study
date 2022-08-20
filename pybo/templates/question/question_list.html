@@ -18,7 +18,12 @@
 -->
 
 <!--여기부터는 Bootstrap 적용 후 --> 
-<link rel = 'stylesheet' href="{{url_for('static', filename='bootstrap.min.css') }}">
+
+<!-- 이제 표준 템플릿을 상속 받으므로 이렇게 넣어줄 필요가 없음-->
+<!--<link rel = 'stylesheet' href="{{url_for('static', filename='bootstrap.min.css') }}">-->
+
+{% extends 'base.html' %}
+{% block content %}
 <div class = "container my-3"> <!-- 부트스트랩 제공 클래스 -->
     <table class="table">   <!-- 부트스트랩 제공 클래스 -->
         <thead>
@@ -49,3 +54,4 @@
 
     </table>
 </div>
+{% endblock %}

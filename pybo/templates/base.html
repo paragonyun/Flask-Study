@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+    <!--기본적으로 요구되는 meta tags-->
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS-->
+    <link rel = 'stylesheet' href = "{{ url_for('static', filename='bootstrap.min.css')}}">
+    <title>Hello, Pybo!!</title>
+    
+</head>
+<body>
+<!-- 기본적으로 들어갈 내용 Start
+여기가 base.html을 상속한 템플릿ㅇ서 구현해야 할 영역이 됨
+-->
+
+{% block content %}
+{% endblock %}
+<!-- 기본적으로 들어갈 내용 End -->
+</body>
+
+</html>
