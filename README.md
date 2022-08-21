@@ -51,6 +51,13 @@ Python (So Obviously)
     **8.21**
 - Data Validation with _Form Mudule_
 - _SERET KEY_ for Detection from _CSRF Attack_
+- Making _Answer Form_ and _Question Form_
+- Review the function of _render template()_
+- Review how to add datas to DB
+- The importance of _"method" parameters_ (in form tag)
+- How to _indicate Error Messages_
+  - Role of _DataRequired_
+  - How to change a Error Message to what I want to show
 
 
 # What I learned from this boos (Miscellaneous) :exclamation:
