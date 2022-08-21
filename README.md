@@ -48,6 +48,10 @@ Python (So Obviously)
   - I think I should organize list of bootstrap's classes..! So useful!
 - How to change of template file to standard HTML structure.
 
+    **8.21**
+- Data Validation with _Form Mudule_
+- _SERET KEY_ for Detection from _CSRF Attack_
+
 
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**

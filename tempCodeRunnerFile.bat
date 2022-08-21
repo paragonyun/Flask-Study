@@ -1,1 +1,1 @@
-c:/venvs/myproject/scripts/activate
+s/activate

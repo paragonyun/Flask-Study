@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 질문 등록 -->
+<div class = "container">
+    <h5 class = "my-3 border-bottoom pb-2">질문등록</h5>
+    <form method = 'post' class ='my-3'>
+        <!-- For CSRF 토큰 -->
+        {{ form.csrf_token }}
+
+        <!-- 오류 표시 -->
+        {% if form.errors %}
+        <div class= "alert alert-danger" role = "alert">
+            {% for field, errors in form.errors.items() %}
+            <strong>{{ form[field].label }}</strong>
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        
+        <!-- 이건 폼 자동 생성 ver (이걸 쓰긴 할듯..) 
+        {{ form.subject.label }} < 라벨 표시 >
+        {{ form.subject(class = "form-control") }}     < 입력폼 표시 >
+
+        {{ form.content.label }}
+        {{ form.content(class = "form-control") }}
+
+        <button type = 'submit' class = 'btn btn-primary'>저장하기</button> -->
+    
+    
+        <!-- HTML 코드로 똑같은 화면 만들기 -->
+        <div class="mb-3">
+            <label for="subject">제목</label>
+            <!-- value = "~~~" : 이미 전송한 데이터가 다시 설정
+            or '' : 기존 값이 없으면 ''로 처리-->
+            <input type="text" class="form-control" name="subject" id="subject"
+            value = "{{ form.subject.date or '' }}"> 
+        </div>
+        <div class="mb-3">
+
+            <label for="content">내용</label>
+            <textarea class="form-control" name="content" id="content" rows="10"></textarea>
+        
+        </div>
+
+        <button type="submit" class="btn btn-primary">저장하기</button>
+    </form>
+</div>
+{% endblock %}
+
+<!-- 
+form 태그의 method가 post 이기 때문에 입력 데이터는 post로 전송됨
+그러나   question_view.py의 create 라우팅 함수는 method를 지정 안 했기 때문에
+가장 기본 방식인 get 만 처리 가능 
+=> post도 처리 가능하게 create 라우팅 함수를 처리해야함
+
+-->

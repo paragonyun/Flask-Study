@@ -7,10 +7,15 @@ from pybo import db
 
 from pybo.models import Question, Answer
 
+from flask import render_template
+from ..forms import AnswerForm
+
 bp = Blueprint('answer', __name__, url_prefix='/answer')
 
 @bp.route('/create/<int:question_id>', methods=('POST',))
 def create(question_id) :
+    '''
+
     question = Question.query.get_or_404(question_id)
 
     ## request로 question_detail.html의 form 태그에 있는 content를 가져옴
@@ -25,5 +30,13 @@ def create(question_id) :
     ## db에 commit
     db.session.commit()
     return redirect(url_for('question.detail', question_id = question_id))
-
-
+    '''
+    form = AnswerForm()
+    question = Question.query.get_or_404(question_id)
+    if form.validate_on_submit():
+        content = request.form['content']
+        answer = Answer(content=content, create_date=datetime.now())
+        question.answer_set.append(answer)
+        db.session.commit()
+        return redirect(url_for('question.detail', question_id=question_id))
+    return render_template('question/question_detail.html', question=question, form=form)
