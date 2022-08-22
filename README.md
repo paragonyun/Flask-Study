@@ -59,6 +59,11 @@ Python (So Obviously)
   - Role of _DataRequired_
   - How to change a Error Message to what I want to show
 
+    **8.22**
+- Navigation Bar
+  - For going main page
+  - The code should be in _'base.html'_
+- Bootstrap NavBar provide _Menu Button_
 
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
@@ -75,3 +80,4 @@ Python (So Obviously)
 
 # What I want to KNOW :grey_question:
 - I don't know why I get messages like _""GET /static/bootstrap.min.css HTTP/1.1" 304 -"_ or _""GET /static/style.css HTTP/1.1" 304 -"_
+- (8.22) I can not see "계정생성" and "로그인" in my page... I think made some typo.. 
