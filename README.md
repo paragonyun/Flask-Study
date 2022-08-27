@@ -65,6 +65,11 @@ Python (So Obviously)
   - The code should be in _'base.html'_
 - Bootstrap NavBar provide _Menu Button_
 
+    **8.27**
+- Paging
+  - _request.args.get()_ function can get value of page from URL
+  - _paginate()_ function is the **MAIN KEY** of paging
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
@@ -81,3 +86,4 @@ Python (So Obviously)
 # What I want to KNOW :grey_question:
 - I don't know why I get messages like _""GET /static/bootstrap.min.css HTTP/1.1" 304 -"_ or _""GET /static/style.css HTTP/1.1" 304 -"_
 - (8.22) I can not see "계정생성" and "로그인" in my page... I think made some typo.. 
+- (8.27) Sometimes the annotation affect to code implemention... why,,,? 

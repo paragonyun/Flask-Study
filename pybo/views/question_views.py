@@ -21,7 +21,9 @@ route도 좀 더 상세하게 바꿈 !!
 
 @bp.route('/list/')
 def _list() :
+    page = request.args.get('page', type=int, default=1)  # 페이지
     question_list = Question.query.order_by(Question.create_date.desc())
+    question_list = question_list.paginate(page, per_page=10)
     return render_template('question/question_list.html', question_list = question_list)
 
 @bp.route('/detail/<int:question_id>/')
@@ -45,3 +47,4 @@ def create() :
 
     ## Post가 아닌 get인 경우[질문 등록하기]에는 아래를 return 함
     return render_template('question/question_form.html', form=form)
+
