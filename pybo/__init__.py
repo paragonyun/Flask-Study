@@ -31,6 +31,7 @@ from flask_sqlalchemy import SQLAlchemy ## 얘는 Python Code로 SQL 할 수 있
 
 
 import config
+from pybo.filter import format_datetime
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -55,6 +56,10 @@ def create_app() :
     app.register_blueprint(main_views.bp)
     app.register_blueprint(question_views.bp)
     app.register_blueprint(answer_views.bp)
+
+    ## Filter 추가
+    from.filter import format_datetime
+    app.jinja_env.filters['datetime'] = format_datetime
 
     return app
 

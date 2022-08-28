@@ -70,6 +70,12 @@ Python (So Obviously)
   - _request.args.get()_ function can get value of page from URL
   - _paginate()_ function is the **MAIN KEY** of paging
 
+    **8.28**
+- Template Filter
+  - Change Format of datetime
+- Add # of Posts !
+- Add # of Comments!
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
