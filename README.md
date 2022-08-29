@@ -76,6 +76,11 @@ Python (So Obviously)
 - Add # of Posts !
 - Add # of Comments!
 
+    **8.29**
+- Making _sign up_
+- Add Codes about _db of users_
+- Validator is VERY IMORTANT in this stage..!
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.

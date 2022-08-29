@@ -1,4 +1,5 @@
 ## 질문을 등록할 때의 폼 작성
+from ast import Pass
 from typing import Text
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
@@ -21,3 +22,17 @@ class QuestionForm(FlaskForm) :
 class AnswerForm(FlaskForm) :
     content = TextAreaField('내용', validators=[DataRequired('답변 하기 싫어유?')])
     
+
+## 회원 가입 폼
+from wtforms import PasswordField, EmailField
+from wtforms.validators import Length, EqualTo, Email
+
+class UserCreateForm(FlaskForm) :
+    username = StringField('사용자이름', validators=[DataRequired(), Length(min=3, max=25)])
+    password1 = PasswordField('비밀번호', validators=[
+        DataRequired(), EqualTo('password2', '비밀번호가 일치하지 않습니다.')
+    ])
+    password2 = PasswordField('비밀번호 확인', validators=[
+        DataRequired()
+    ])
+    email = EmailField('이메일', validators=[DataRequired(), Email()])
