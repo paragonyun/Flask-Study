@@ -1,10 +1,12 @@
 # Index
 [Book and Envrionment](#flask-study-and-envrionment-earthasia)  
+
 [What I Learned - Pythona and Terminal](#what-i-learned-from-this-book-python-and-terminal-basic-facepunch)  
 
-[What I Leanred - FLASK](#what-i-learned-from-this-book-flask-bluebook)
+**[What I Leanred - FLASK](#what-i-learned-from-this-book-flask-bluebook)**
 
 [What I Learned - misscelloaneous](#what-i-learned-from-this-boos-miscellaneous-exclamation)  
+
 [Maybe Later...](#what-i-want-to-know-greyquestion)
 
 # Flask Study and Envrionment :earth_asia:
