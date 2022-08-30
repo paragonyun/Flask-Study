@@ -81,6 +81,19 @@ Python (So Obviously)
 - Add Codes about _db of users_
 - Validator is VERY IMORTANT in this stage..!
 
+    **8.30**
+- The Role of _flash()_
+- Encryption password by _generate\_password\_hash()_
+- Navbar is returnd... with _js_
+- Adding Navbar with _include_
+  - _include_ can insert HTML in specific location of template
+- The difference of _Session_ from request
+  - It is a kind of MEMORY OF SERVER
+  - So it maintain the received informations
+- Making _Login_
+- Making _Logout_
+- _@bp.before\_app\_request_ Annotation is always implemented before all of routing Functions!!
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
@@ -97,4 +110,4 @@ Python (So Obviously)
 # What I want to KNOW :grey_question:
 - I don't know why I get messages like _""GET /static/bootstrap.min.css HTTP/1.1" 304 -"_ or _""GET /static/style.css HTTP/1.1" 304 -"_
 - (8.22) I can not see "계정생성" and "로그인" in my page... I think made some typo.. 
-- (8.27) Sometimes the annotation affect to code implemention... why,,,? 
+  - (8.30) I finally find why I could not SEE that buttons... It was because the size of Window!!!!!!!! ... :(
