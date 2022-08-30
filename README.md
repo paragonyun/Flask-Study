@@ -59,7 +59,7 @@ Python (So Obviously)
   - Role of _DataRequired_
   - How to change a Error Message to what I want to show
 
-    **8.22**
+  **8.22**
 - Navigation Bar
   - For going main page
   - The code should be in _'base.html'_
@@ -68,9 +68,11 @@ Python (So Obviously)
     **8.27**
 - Paging
   - _request.args.get()_ function can get value of page from URL
-  - _paginate()_ function is the **MAIN KEY** of paging
+  - _paginate()_ function is the **MAIN KEY** of paging  
 
-    **8.28**
+  
+ 
+  **8.28**
 - Template Filter
   - Change Format of datetime
 - Add # of Posts !
