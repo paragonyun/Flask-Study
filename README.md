@@ -1,3 +1,12 @@
+# Index
+[Book and Envrionment](#flask-study-and-envrionment-earthasia)  
+[What I Learned - Pythona and Terminal](#what-i-learned-from-this-book-python-and-terminal-basic-facepunch)  
+
+**[What I Leanred - FLASK](#what-i-learned-from-this-book-flask-bluebook)**  
+
+[What I Learned - misscelloaneous](#what-i-learned-from-this-boos-miscellaneous-exclamation)  
+[Maybe Later...](#what-i-want-to-know-greyquestion)
+
 # Flask Study and Envrionment :earth_asia:
 I refer to [Jump to Flask](https://wikidocs.net/book/4542)   
 Window  
@@ -70,7 +79,7 @@ Python (So Obviously)
   - _request.args.get()_ function can get value of page from URL
   - _paginate()_ function is the **MAIN KEY** of paging  
 
-  
+
  
   **8.28**
 - Template Filter
