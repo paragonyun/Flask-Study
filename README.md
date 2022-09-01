@@ -32,7 +32,6 @@ Python (So Obviously)
 - and I think it is more easier to connect with Git..!  
 
 # What I learned from this book (Flask) :blue_book:  
-**1. Basic Things of Flask**  
 - We have to run flask  _at project directory_
 - Role of _create_app()_
 - Role and Usage of _Blue Print_
@@ -40,26 +39,33 @@ Python (So Obviously)
 - DB Modification, Update and Inquire with Python Codes (But I think I will prefer SQL..)
 - Setting DB's Type and Key Setting and Relationship Between Tables  
 
-    **8.17**
+<br>
+
+## **8.17**
 - Template Tags that are ofren used in Flask (if, for, object) 
 - 200 : Success   
   500 : Internal Server Error(it means my code's somewhere is wrong...)   
   404 : Not Found (it means I should make codes about other cases..!)  
 - Role and Usage of _redirect_
 - Role and Usage of _url_for()_ (Very Useful)
-- Role of _request_ (I wonder if is almost same with request function of Crawling)
+- Role of _request_ (I wonder if is almost same with request function of Crawling)  
 
-    **8.19**
+<br>
+
+## **8.19**
 - Adjust Design with _CSS_ 
 - Design Web Page more easier with _Bootstrap_ !! 
 
+<br>
 
-    **8.20**
+## **8.20**
 - It is so AMAZNG to desing with _"card component" of Boostrap_
   - I think I should organize list of bootstrap's classes..! So useful!
 - How to change of template file to standard HTML structure.
 
-    **8.21**
+<br>
+
+## **8.21**
 - Data Validation with _Form Mudule_
 - _SERET KEY_ for Detection from _CSRF Attack_
 - Making _Answer Form_ and _Question Form_
@@ -70,31 +76,39 @@ Python (So Obviously)
   - Role of _DataRequired_
   - How to change a Error Message to what I want to show
 
-  **8.22**
+<br>
+
+## **8.22**
 - Navigation Bar
   - For going main page
   - The code should be in _'base.html'_
 - Bootstrap NavBar provide _Menu Button_
 
-    **8.27**
+<br>
+
+## **8.27**
 - Paging
   - _request.args.get()_ function can get value of page from URL
   - _paginate()_ function is the **MAIN KEY** of paging  
 
-
+<br>
  
-  **8.28**
+## **8.28**
 - Template Filter
   - Change Format of datetime
 - Add # of Posts !
 - Add # of Comments!
 
-    **8.29**
+<br>
+
+## **8.29**
 - Making _sign up_
 - Add Codes about _db of users_
 - Validator is VERY IMORTANT in this stage..!
 
-    **8.30**
+<br>
+
+## **8.30**
 - The Role of _flash()_
 - Encryption password by _generate\_password\_hash()_
 - Navbar is returnd... with _js_
@@ -107,7 +121,9 @@ Python (So Obviously)
 - Making _Logout_
 - _@bp.before\_app\_request_ Annotation is always implemented before all of routing Functions!!
 
-    **9.1**
+<br>
+
+## **9.1**
 - _Revise models.py_ and _Revise \__init\__.py_ to add 'user' attribute
 - When I want to add attribute that _nullable=False_, I shoud do sequential stages below...!
 ```
@@ -130,14 +146,19 @@ Python (So Obviously)
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
 
-  **8.20**
+<br>
+
+## **8.20**
 - There are _Standard of HTML_
   - HTML structure should have _html, head, body element_ and css file link should be in _head element_ 
   - Flask provide to us for changing of template to HTML Standard !!
 
-  **9.1**
+<br>
+
+## **9.1**
 - If you want to Use **_JS_** in HTML, it is better to insert just over the \<Body> tag
 
+<br>
 
 **n. Hibbit**
 - READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 
