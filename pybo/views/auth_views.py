@@ -6,6 +6,9 @@ from pybo import db
 from pybo.forms import UserCreateForm, UserLoginForm
 from pybo.models import User
 
+
+import functools
+
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/signup/', methods=('GET', 'POST'))
@@ -47,6 +50,13 @@ def login() :
             ## flask session에 사용자 정보 저장
             ## session은 한번 생성되면 그 값을 계속 유지함 <-> request : 객체를 요청할 때마다 새로운 객체 생성
             session['user_id'] = user.id
+
+            _next = request.args.get('next', '')
+            if _next :
+                return redirect(_next)
+            else :
+                return redirect(url_for('main.index'))
+
             return redirect(url_for('main.index'))
         flash(error) ## 이거 아니면 전송 받았는데 에러가 났다는 의미이므로..!
 
@@ -66,3 +76,12 @@ def load_logged_in_user() :
 def logout() :
     session.clear()
     return redirect(url_for('main.index'))
+
+def login_required(view) :
+    @functools.wraps(view)
+    def wrapped_view(*args, **kwargs) :
+        if g.user is None : ##로그인이 안 되어 있는 상태
+            _next = request.url if request.method == 'GET' else ''
+            return redirect(url_for('auth.login', next=_next))
+        return view(*args, **kwargs)
+    return wrapped_view

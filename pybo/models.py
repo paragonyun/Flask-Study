@@ -16,9 +16,13 @@ class Question(db.Model) : ## class 이름으로 Table 이름이 생성됨
     ## String과 Text의 차이 : String은 글자수 제한 O, Text는 X
     create_date = db.Column(db.DateTime(), nullable=False)
 
+    ## User 모델을 Questin 모델과 연결하기 위한 속성
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    
+    ## Question에서 User를 참조하기 위한 속성
+    user = db.relationship('User', backref=db.backref('question_set'))
 
 ## 답변 class도 생성
-
 class Answer (db.Model) :
     id = db.Column(db.Integer, primary_key = True)
     '''
@@ -38,6 +42,9 @@ class Answer (db.Model) :
     content = db.Column(db.Text(), nullable=False)
     create_date = db.Column(db.DateTime(), nullable=False)
 
+    ## 글쓴이 추가
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    user = db.relationship('User', backref=db.backref('answer_set'))
 
 ### 회원 정보 (User)
 class User(db.Model) :

@@ -9,6 +9,9 @@ from flask import request, url_for
 from werkzeug.utils import redirect
 from .. import db
 
+from flask import g
+from pybo.views.auth_views import login_required
+
 bp = Blueprint('question', __name__, url_prefix='/question')
 
 
@@ -33,13 +36,14 @@ def detail(question_id) :
     return render_template('question/question_detail.html', question=question, form=form)
 
 @bp.route('/create/', methods = ('GET', 'POST')) ## 질문 작성을 들어갈 때
+@login_required ## 로그인이 필요한 서비스라는 제약을 걸어줌
 def create() :
     form = QuestionForm()
 
     ## 여기부터 데이터를 db에 저장하는 코드
     ## POST로 지정했기 때문에 이제 POST인 경우[저장하기]엔 아래의 코드를 실행해서 return 하고
     if request.method == 'POST' and form.validate_on_submit() : ##validate_on_submit()은 전송된 폼 데이터의 정합성 점검
-        question = Question(subject = form.subject.data, content = form.content.data, create_date = datetime.now())
+        question = Question(subject = form.subject.data, content = form.content.data, create_date = datetime.now(), user=g.user)
         db.session.add(question)
         db.session.commit()
         
