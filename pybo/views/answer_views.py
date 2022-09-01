@@ -13,6 +13,8 @@ from ..forms import AnswerForm
 from flask import g
 from .auth_views import login_required
 
+from flask import flash
+
 bp = Blueprint('answer', __name__, url_prefix='/answer')
 
 @bp.route('/create/<int:question_id>', methods=('POST',))
@@ -44,3 +46,41 @@ def create(question_id) :
         db.session.commit()
         return redirect(url_for('question.detail', question_id=question_id))
     return render_template('question/question_detail.html', question=question, form=form)
+
+
+## 답변 수정 라우팅 함수
+@bp.route('/modify/<int:answer_id>', methods=('GET', 'POST'))
+@login_required
+def modify(answer_id) :
+    answer = Answer.query.get_or_404(answer_id)
+    if g.user != answer.user :
+        flash('본인 답변만 수정할 수 있습니다.')
+        return redirect(url_for('question.detail', question_id=answer.question.id))
+    
+    if request.method == 'POST' :
+        form = AnswerForm()
+        if form.validate_on_submit() :
+            form.populate_obj(answer)
+            answer.modify_date = datetime.now() ## 수정 시각 저장
+            db.session.commit()
+            return redirect(url_for('question.detail', question_id = answer.question.id))
+    
+    else : ## 수정 버튼을 누르는 경우!!!!!!!
+        form = AnswerForm(obj=answer)
+    
+    return render_template('answer/answer_form.html', form=form)
+
+## 삭제를 위한 라우팅 함수
+@bp.route('/delete/<int:answer_id>')
+@login_required
+def delete(answer_id) :
+    answer = Answer.query.get_or_404(answer_id)
+    question_id = answer.question.id
+    if g.user != answer.user :
+        flash('타인의 답변은 삭제할 수 없습니다.')
+    
+    else :
+        db.session.delete(answer)
+        db.session.commit()
+    
+    return redirect(url_for('question.detail', question_id=question_id))

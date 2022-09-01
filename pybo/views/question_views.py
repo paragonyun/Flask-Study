@@ -12,6 +12,8 @@ from .. import db
 from flask import g
 from pybo.views.auth_views import login_required
 
+from flask import flash
+
 bp = Blueprint('question', __name__, url_prefix='/question')
 
 
@@ -52,3 +54,36 @@ def create() :
     ## Post가 아닌 get인 경우[질문 등록하기]에는 아래를 return 함
     return render_template('question/question_form.html', form=form)
 
+## 질문 수정을 위한 라우팅 함수
+@bp.route('/modify/<int:question_id>', methods=('GET','POST'))
+@login_required
+def modify(question_id) :
+    question = Question.query.get_or_404(question_id)
+    if g.user != question.user :
+        flash('너가 쓴 글 아니잖아여!!!!')
+        return redirect(url_for('question.detail', question_id=question_id))
+    
+    if request.method == 'POST' : ## 수정하고 저장하기 버튼을 눌렀을 경우임!
+        form = QuestionForm() 
+        if form.validate_on_submit() :
+            form.populate_obj(question)
+            question.modify_date = datetime.now() ## 수정일시 저장
+            db.session.commit()
+            return redirect(url_for('question.detail', question_id = question_id))
+
+    else : ## get 요청인 경우 = 질문 수정 버튼을 눌렀을 경우
+        form = QuestionForm(obj=question) ## question의 내용이 담겨져서 나옴!!
+    return render_template('question/question_form.html', form=form)
+
+
+## 질문 삭제를 위한 라우팅 함수
+@bp.route('/delete/<int:question_id>')
+@login_required
+def delete(question_id) :
+    question = Question.query.get_or_404(question_id)
+    if g.user != question.user :
+        flash('다른 사람 글은 삭제 못해용~')
+        return redirect(url_for('question.detail', question_id=question_id))
+    db.session.delete(question) ## db에서 question에 해당되는 내용 삭제
+    db.session.commit()
+    return redirect(url_for('question._list'))

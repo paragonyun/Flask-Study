@@ -21,5 +21,11 @@
 <!-- 기본적으로 들어갈 내용 End -->
 <!-- Bootstrap JS -->
 <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+<!--JS 코드가 들어가는 곳 -->
+{% block script %}
+{% endblock %}
+<!-- JS 코드가 끝나는 곳 -->
+<!-- 이렇게 하면 JS 코드는 항상 Body 태그 위에 붙음! -->
 </body>
 </html>

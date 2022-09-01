@@ -123,6 +123,9 @@ Python (So Obviously)
 - **_@login\_required_** Decorator makes codes more efficiently!!
 - How to _deactivate_ text area of HTML
 
+- If I want to show nothing when I click a Button, use **_javascript:void(0)_** 
+  - ex) Delete Button 
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
@@ -131,6 +134,10 @@ Python (So Obviously)
 - There are _Standard of HTML_
   - HTML structure should have _html, head, body element_ and css file link should be in _head element_ 
   - Flask provide to us for changing of template to HTML Standard !!
+
+  **9.1**
+- If you want to Use **_JS_** in HTML, it is better to insert just over the \<Body> tag
+
 
 **n. Hibbit**
 - READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 
