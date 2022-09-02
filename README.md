@@ -142,6 +142,16 @@ Python (So Obviously)
 - If I want to show nothing when I click a Button, use **_javascript:void(0)_** 
   - ex) Delete Button 
 
+<br>
+
+## **9.2**
+- Add _Recommend Voting_(not RecSys.. ㅋㅋ)
+  - It is N:N relatioonship! So We need to make _Table_ that has _many **PRIMARY KEY**_
+  - _Can not have same backref name_ between relationship attribute by same model
+
+- Add **_Anchor_** for moving scroll to what I post!!
+- Can write the posts with **_MARK DOWN_** with flask-markdown 
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
@@ -159,6 +169,11 @@ Python (So Obviously)
 - If you want to Use **_JS_** in HTML, it is better to insert just over the \<Body> tag
 
 <br>
+
+## **9.2**
+- Badge in Btn is so Cute...
+- Anchor Element can go tag to url
+
 
 **n. Hibbit**
 - READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 

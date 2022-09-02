@@ -33,6 +33,7 @@ from sqlalchemy import MetaData
 import config
 from pybo.filter import format_datetime
 
+from flaskext.markdown import Markdown
 
 naming_convention = {
     'ix' : 'ix_%(column_0_label)s',
@@ -74,6 +75,9 @@ def create_app() :
     ## Filter 추가
     from.filter import format_datetime
     app.jinja_env.filters['datetime'] = format_datetime
+
+    ## Markdown
+    Markdown(app, extensions=['nl2br', 'fenced_code'])
 
     return app
 

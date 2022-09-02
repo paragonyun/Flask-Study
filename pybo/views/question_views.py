@@ -87,3 +87,19 @@ def delete(question_id) :
     db.session.delete(question) ## db에서 question에 해당되는 내용 삭제
     db.session.commit()
     return redirect(url_for('question._list'))
+
+
+## 질문 추천을 위한 라우팅 함수
+@bp.route('/vote/<int:question_id>/')
+@login_required
+def vote(question_id) :
+    _question = Question.query.get_or_404(question_id)
+    if g.user == _question.user :
+        flash('본인 질문엔 추천할 수 없습니다.')
+    
+    else :
+        _question.voter.append(g.user)
+        db.session.commit()
+    
+    return redirect(url_for('question.detail', question_id = question_id))
+

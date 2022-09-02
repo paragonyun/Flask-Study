@@ -6,6 +6,20 @@ id | subject | content | create_date
 
 from pybo import db ## __init__.py의 db를 가져옴
 
+## 추천수를 위한 객체 생성
+question_voter = db.Table(
+    'question_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('question_id', db.Integer, db.ForeignKey('question.id', ondelete='CASCADE'), primary_key=True)    
+)
+
+
+answer_voter = db.Table(
+    'answer_voter',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True),
+    db.Column('answer_id', db.Integer, db.ForeignKey('answer.id', ondelete='CASCADE'), primary_key=True)
+)
+
 ## db.Model을 상속 받은 Question class로 SQL 작성
 class Question(db.Model) : ## class 이름으로 Table 이름이 생성됨
     id = db.Column(db.Integer, primary_key = True) ## 칼럼 속성과 기본키인지 아닌지
@@ -24,6 +38,15 @@ class Question(db.Model) : ## class 이름으로 Table 이름이 생성됨
 
     ## 수정 일시 기록
     modify_date = db.Column(db.DateTime(), nullable=True)
+
+    ## 추천수 기능
+    # 추천인
+    '''
+    User 모델을 첫번째로 연결되어 있고 secondary=question_voter Table로 되어있으므로 
+    Question 모델로 추천인을 저장하면 실제 ㄷ이터는 quesion_voter Table에 저장
+    추천인 정보는 voter column에 저장됨
+    '''
+    voter = db.relationship('User', secondary=question_voter, backref=db.backref('qestion_voter_set'))
 
 ## 답변 class도 생성
 class Answer (db.Model) :
@@ -51,6 +74,9 @@ class Answer (db.Model) :
 
     ## 수정 일시 기록
     modify_date = db.Column(db.DateTime(), nullable=True)
+
+    ## 추천인 정보
+    voter = db.relationship('User', secondary=answer_voter, backref=db.backref('answer_voter_set'))
     
 ### 회원 정보 (User)
 class User(db.Model) :

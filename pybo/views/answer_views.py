@@ -44,7 +44,10 @@ def create(question_id) :
         answer = Answer(content=content, create_date=datetime.now(), user=g.user) 
         question.answer_set.append(answer)
         db.session.commit()
-        return redirect(url_for('question.detail', question_id=question_id))
+
+        return redirect(f"{url_for('question.detail', question_id=question_id)}#answer_{answer.id}")
+    
+    
     return render_template('question/question_detail.html', question=question, form=form)
 
 
@@ -63,7 +66,8 @@ def modify(answer_id) :
             form.populate_obj(answer)
             answer.modify_date = datetime.now() ## 수정 시각 저장
             db.session.commit()
-            return redirect(url_for('question.detail', question_id = answer.question.id))
+
+            return redirect(f"{url_for('question.detail', question_id=answer.question.id)}#answer_{answer.id}")
     
     else : ## 수정 버튼을 누르는 경우!!!!!!!
         form = AnswerForm(obj=answer)
@@ -84,3 +88,17 @@ def delete(answer_id) :
         db.session.commit()
     
     return redirect(url_for('question.detail', question_id=question_id))
+
+## 추천를 위한 라우팅 함수
+@bp.route('/vote/<int:answer_id>/')
+@login_required
+def vote(answer_id) :
+    _answer = Answer.query.get_or_404(answer_id)
+    if g.user == _answer.user :
+        flash('본인 답변엔 추천할 수 없습니다.')
+    
+    else :
+        _answer.voter.append(g.user)
+        db.session.commit()
+    
+    return redirect(f"{url_for('question.detail', question_id=_answer.question.id)}#answer_{_answer.id}")
