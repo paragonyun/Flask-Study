@@ -152,6 +152,29 @@ Python (So Obviously)
 - Add **_Anchor_** for moving scroll to what I post!!
 - Can write the posts with **_MARK DOWN_** with flask-markdown 
 
+<br>
+
+## **9.5**
+- Add **_Search_** !!
+  - It has to be "GET" for indexing
+  - and "POST" avoids duplicate requests 
+    - It arise _expired page_
+
+- How to use *_JOIN_* in FLASK
+  - _.query.join(Table).filter(condition)_ to use inner join!
+  - _.query.count()_ function for counting
+  - _.query.outerjoin()_ to use outerjoin!
+    - If you don't want to see duplicated values, use _distinct()_
+  
+- How to use *_Subquery_*
+  - For joining complicated relationships
+```python
+sub_query = db.session.query(Answer.question_id, Answer.content, User.username)\
+            .join(User, Answer.user_id == User.id).subquery()
+
+Question.query.outerjoin(sub_query, sub_query.c.question_id == Question.id).distinct()
+```
+
 # What I learned from this boos (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
