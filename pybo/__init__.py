@@ -30,7 +30,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy ## 얘는 Python Code로 SQL 할 수 있게 해주는 녀석임
 from sqlalchemy import MetaData
 
-import config
+# import config -- config.py 에서 config 폴더로 바뀜
 from pybo.filter import format_datetime
 
 from flaskext.markdown import Markdown
@@ -49,7 +49,8 @@ migrate = Migrate()
 
 def create_app() :
     app = Flask(__name__)
-    app.config.from_object(config) ## config에 작성했던 항목을 읽어옴
+    # app.config.from_object(config) ## config에 작성했던 항목을 읽어옴
+    app.config.from_envvar('APP_CONFIG_FILE') # 환경 변수 APP_CONFIG_FILE에 정의된 파일을 환경 파일로 사용!
 
     ### ORM
     db.init_app(app)

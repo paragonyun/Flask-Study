@@ -143,3 +143,20 @@
 ![image](https://user-images.githubusercontent.com/83996346/189058913-47a10d08-c83a-47a2-afb7-fd1a3a09da36.png)
 ![image](https://user-images.githubusercontent.com/83996346/189059180-55ea2e85-3bb2-46d6-a5d4-26c42d65513a.png)
 ![image](https://user-images.githubusercontent.com/83996346/189059079-8e6c4499-be9f-4c45-af84-2d33391bc5b6.png)
+
+
+## 다시 실행 시킬 때.
+```ubuntu
+cd venvs
+cd myptoject
+cd bin
+. activate
+cd ~/projects
+export FLASK_APP=pybo
+export FLASK_DEBUG=true
+cd myproject
+flask run --host=0.0.0.0
+
+my static ip (AWS) : 43.200.124.184
+or click this url : http://43.200.124.184:5000/question/list/
+```

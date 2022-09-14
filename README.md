@@ -175,7 +175,25 @@ sub_query = db.session.query(Answer.question_id, Answer.content, User.username)\
 Question.query.outerjoin(sub_query, sub_query.c.question_id == Question.id).distinct()
 ```
 
-# What I learned from this boos (Miscellaneous) :exclamation:
+## **9.14**
+- Using **config file** for more safe environment!!
+- To generate **Complex Secret KEY**, use codes below in Terminal!!
+```Terminal
+python -c "import os; print(os.urandom(16))"
+```
+you will get a random key!
+
+- If you use config folder to manage params..! you have to set config file directory in Terminal!!
+`set APP_CONFIG_FILE=C:\venvs\myproject\config\development.py`
+
+# What I leaned from this book (Web and Server!) :computer:
+- Web Browser request a **"static page"** to server!
+
+
+## **9.14** (long time... no... see...)
+- 
+
+# What I learned from this book (Miscellaneous) :exclamation:
 **1. HTML**
 - If there are template code in Comment(주석) like {%%}, TemplateSyntaxError is raised.
 
