@@ -187,11 +187,18 @@ you will get a random key!
 `set APP_CONFIG_FILE=C:\venvs\myproject\config\development.py`
 
 # What I leaned from this book (Web and Server!) :computer:
-- Web Browser request a **"static page"** to server!
-
-
 ## **9.14** (long time... no... see...)
-- 
+- Web Browser request a **"Static Page"** to server!
+  - It means `.js`, `.png`, `.css` , `.html`.. etc..
+- Web Browser also request a **"Dynamic Page"**
+  - It means changes continuously! like question list that is connected with DB!!
+- When Browser request Dynamic Page, we need **Web Server and "WSGI(위스키)[=WSGI미들웨어, WSGI컨테이너]" Server!!**
+  - _**Web Server calls WSGI Server and WSGI Server calls python programs!!**_
+  - Web Server -> WSGI Server -> Python Programs!
+
+- WSGI Server calls WSGI Application(like django.. FLASK!)
+![image](https://user-images.githubusercontent.com/83996346/190076460-90ad227f-b5aa-4ae6-9aa1-09ec1e34d145.png)
+
 
 # What I learned from this book (Miscellaneous) :exclamation:
 **1. HTML**

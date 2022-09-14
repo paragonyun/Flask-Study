@@ -138,12 +138,15 @@
 `flask run --host=0.0.0.0`  
 0.0.0.0은 모든 외부 IP에서 이 서버로의 접속을 허용한다는 말(아이피 개방)
 
+<br>
+
 # 결과물
 
 ![image](https://user-images.githubusercontent.com/83996346/189058913-47a10d08-c83a-47a2-afb7-fd1a3a09da36.png)
 ![image](https://user-images.githubusercontent.com/83996346/189059180-55ea2e85-3bb2-46d6-a5d4-26c42d65513a.png)
 ![image](https://user-images.githubusercontent.com/83996346/189059079-8e6c4499-be9f-4c45-af84-2d33391bc5b6.png)
 
+<br>
 
 ## 다시 실행 시킬 때.
 ```ubuntu
@@ -160,3 +163,86 @@ flask run --host=0.0.0.0
 my static ip (AWS) : 43.200.124.184
 or click this url : http://43.200.124.184:5000/question/list/
 ```
+
+**이게 귀찮으면? nano 편집기를 이용하자!**
+> 1. `cd /home/ubuntu/venvs/`로 경로 이동
+> 2. `nano myproject.sh`
+> ![image](https://user-images.githubusercontent.com/83996346/190072776-d737d611-a7b3-483b-a2d1-5df6c5d27129.png)
+이런 화면을 확인할 수 있다.
+> 3. 아래의 코드 입력
+```
+#!bin/bash
+cd ~/projects/myproject
+export FLASK_APP=pybo
+export FLASK_DEBUG=true
+export APP_CONFIG_FILE=/home/ubuntu/projects/myproject/config/production.py
+. ~/venvs/myproject/bin/activate
+```
+> 4. _Ctrl_ + o 그러고 enter -> _ctrl_ + x로 저장 후 나옴
+> 5. `. myproject.sh`로 명령어 실행!!
+
+<br>
+
+# WSGI Server 구니콘 사용하기
+- 우리가 지금까지 flask run 으로 한 건 플라스크 내장 서버! 그러나 이건 운영 및 배포용으로는 적절하지 않음!!  
+`pip install gunicorn`  
+설치되면 아래의 명령어 실행  
+```
+cd ~/projects/myproject/ (이미 여기면 뭐 안 써도 됨!)
+gunicorn --bind 0:5000 "pybo:create_app()" 
+```
+5000번 포트로 WSGI 서버를 수행 -> pybo의 application factory인 create_app()을 호출!! (이게 WSGI Application 역할)  
+그럼 flask run을 안 하더라도 gunicorn 이 서버를 띄워줌!! 와우!
+
+## Gunicorn 소캣
+Unix 계열은 소켓으로 서버를 띄우는 게 더 효율적!   
+(Unix : OS의 가장 근간이 되는 디자인! ubuntu도 유닉스 계열이라 그럼)   
+-> 이렇게 소켓으로 작동 시키면 단독으로는 실행 못 시킴..!   
+    -> Nginx와 같은 웹 서버에서 WSGI 서버에 접속하도록 설정해줘야됨  
+포트로 여는 거랑 비슷한데 살짝 다르다.   
+`gunicorn --bind unix:/tmp/myproject.sock "pybo:create_app()"`
+
+## AWS가 Gunicorn 자동 실행시키게 하기
+**1. 환경 변수 파일 작성**  
+    `/home/ubuntu/venvs/`로 이동!!!!  
+    `nano myproject.env`로 편집기 들어가기.  
+    아래의 코드 입력  
+
+    FLASK_APP=pybo
+    FLASK_DEBUG=true
+    APP_CONFIG_FILE=/home/ubuntu/projects/myproject/config/production.py
+    
+**2. 서비스 파일 작성**  
+    `/etc/systemd/system/`으로 이동  
+    `sudo nano myproject.service` 로 편집기 실행(관리자 권한으로!)
+    아래의 코드 입력
+
+    [Unit]
+    Description=gunicorn daemon
+    After=network.target
+
+    [Service]
+    User=ubuntu
+    Group=ubuntu
+    WorkingDirectory=/home/ubuntu/projects/myproject
+    EnvironmentFile=/home/ubuntu/venvs/myproject.env
+    ExecStart=/home/ubuntu/venvs/myproject/bin/gunicorn \
+            --workers 2 \
+            --bind unix:/tmp/myproject.sock \
+            "pybo:create_app()"
+    [Install]
+    WantedBy=multi-user.target
+
+**3. 서비스 실행 및 등록**  
+    `sudo systemctl start myproject.service`으로 실행  
+    `sudo systemctl status myproject.service`로 정상작동 여부 확인  
+> 경로 설정이 매우 중요합니다..!!  
+  
+**4. AWS 실행시 자동으로 Gunicorn 실행**  
+    `sudo systemctl enable myproject.service`
+
+**그 외**  
+    서비스 종료  
+    `sudo systemctl stop myproject.service`  
+    서비스 재시작
+    `sudo systemctl restart myproject.service`
