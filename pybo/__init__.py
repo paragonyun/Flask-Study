@@ -47,6 +47,12 @@ naming_convention = {
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate()
 
+from flask import render_template
+
+## 에러페이지 함수
+def page_not_found(e) :
+    return render_template('404.html'), 404 ## 404는 웹 브라우져에 404에러라고 뜸!!
+
 def create_app() :
     app = Flask(__name__)
     # app.config.from_object(config) ## config에 작성했던 항목을 읽어옴
@@ -79,6 +85,9 @@ def create_app() :
 
     ## Markdown
     Markdown(app, extensions=['nl2br', 'fenced_code'])
+
+    ## Error Page
+    app.register_error_handler(404, page_not_found)
 
     return app
 

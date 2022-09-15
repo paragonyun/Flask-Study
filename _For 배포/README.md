@@ -246,3 +246,70 @@ Unix 계열은 소켓으로 서버를 띄우는 게 더 효율적!
     `sudo systemctl stop myproject.service`  
     서비스 재시작
     `sudo systemctl restart myproject.service`
+
+<br>
+
+# Nginx 사용하기
+이제 WSGI Server인 gunicorn 설정을 끝냈다. 이제 WSGI 서버를 호출하는 역할을 하는 Web Server의 일종인 **Ngix**(엔진엑스)를 사용해보자.
+  
+## Nginx 설치
+`sudo apt install nginx`  
+설치후 `/etc/nginx/sites-available/`로 이동  
+
+## 설정파일 작성
+`sudo nano myproject`  
+```
+server {
+        listen 80;
+        server_name43.200.124.184;
+
+        location = /favicon.ico { access_log off; log_not_found off; }
+
+        location /static {
+                alias /home/ubuntu/projects/myproject/pybo/static;
+        }
+
+        location / {
+                include proxy_params;
+                proxy_pass http://unix:/tmp/myproject.sock;
+        }
+}
+```
+> **server_name** : 고정 ip  
+> **location /static** : 정적파일을 요청받았을 때 파일을 찾는 디렉토리  
+> **location /** : static 외의 요청을 Gunicorn이 처리!(동적 요청)
+
+## Nginx가 설정파일을 읽어올 수 있게 하기
+`/etc/nginx/sites-enabled/`로 이동  
+이 곳에서 nginx가 활성화 시킬 설정파일을 관리함!!  
+  
+`sudo rm default`로 기존의 파일 삭제  
+  
+`sudo ln -s /etc/nginx/sites-available/myproject`로 아까 만들어놨던 설정파일을 링크해줌!  
+  
+## Nginx 실행
+설정파일에 오타가 났다면 그 경로로 가서 `sudo nano myproject`로 다시 열고 오타를 고치면 됩니당  
+
+nginx실행은  
+`sudo systemctl restart nginx`
+
+<br>
+
+# 이제 포트 번호 없이 접속할 수 있다!
+`http://고정ip`만 입력해도 `flask run --host=0.0.0.0`없이 가능!!!!
+![image](https://user-images.githubusercontent.com/83996346/190285656-4fab61d2-eab3-49e0-9673-dcd275aa32b7.png)
+
+마지막으로 Gunicorn 설정을 운영환경으로 바꿔줘야 한다. 아니면 오류 내용이 그대로 화면에 떠서 해킹 위험이 있다!    
+`/home/ubuntu/venvs/myproject.env`에서 설정 수정   
+ 
+```
+FLASK_APP=pybo
+FLASK_DEBUG=false
+...
+```
+그동안 정들었던 `FLASK_DEBUG=true`를 이제 `false`로 바꿔준다  
+
+`sudo systemctl restart myproject.service`로 Gunicorn 재시작!
+
+
+

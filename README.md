@@ -185,6 +185,13 @@ you will get a random key!
 
 - If you use config folder to manage params..! you have to set config file directory in Terminal!!
 `set APP_CONFIG_FILE=C:\venvs\myproject\config\development.py`
+  
+## **9.15**
+- Add **Error Page**
+
+
+
+<br>
 
 # What I leaned from this book (Web and Server!) :computer:
 ## **9.14** (long time... no... see...)
@@ -199,6 +206,11 @@ you will get a random key!
 - WSGI Server calls WSGI Application(like django.. FLASK!)
 ![image](https://user-images.githubusercontent.com/83996346/190076460-90ad227f-b5aa-4ae6-9aa1-09ec1e34d145.png)
 
+## **9.15**  
+- The Basic Port of HTTP Protocol is **80** !! 
+
+
+<br>
 
 # What I learned from this book (Miscellaneous) :exclamation:
 **1. HTML**
