@@ -62,11 +62,12 @@ def hello_pybo() :
 '''
 
 ## url_for로 리다이렉팅 기능 추가
-from flask import url_for
+from flask import url_for, current_app
 from werkzeug.utils import redirect
 
 @bp.route('/')
 def index() :                                  ## url_for : 라우팅 함수에 매핑되어 있는 url return
+    current_app.logger.info('INFO 레벨로 출력') ## 직접 로그를 출력하기 위한 함수
     return redirect(url_for('question._list')) ## redirect : URL로 페이지 이동
     '''
     우리는 아까 question_view.py 에서 블루 프린트의 이름을 'question'이라고 했음
