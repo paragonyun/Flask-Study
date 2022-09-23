@@ -209,6 +209,12 @@ you will get a random key!
 ## **9.15**  
 - The Basic Port of HTTP Protocol is **80** !! 
 
+## **9.23**
+- How to log the logs to a log file
+  - Using **_dictConfig_** to set the log formats
+
+- Reason why we have to use **_SSL(HTTPS)_** !!
+
 
 <br>
 
@@ -238,6 +244,7 @@ you will get a random key!
 **n. Hibbit**
 - READ THE ERROR MESSAGES CAREFULLY... PLZ!!!!!!!! it already teachs to you the answer sometimes..! 
 - If the function is different, it is better to seperate them by module. It will be easier to maintain projects!! 
+- **_git_** is GOAT
 
 # What I want to KNOW :grey_question:
 - I don't know why I get messages like _""GET /static/bootstrap.min.css HTTP/1.1" 304 -"_ or _""GET /static/style.css HTTP/1.1" 304 -"_
