@@ -311,5 +311,27 @@ FLASK_DEBUG=false
 
 `sudo systemctl restart myproject.service`로 Gunicorn 재시작!
 
+# HTTPS로 바꾸기 
+HTTP만 사용하면 주고 받는 데이터가 해커에게 그대로 노출된다.
+
+때문에 이 주고 받는 데이터를 암호화 시키는 프로토콜인 HTTPS로 바꿔줘야 한다!!!
+
+## SSL 인증서 설치(도메인 필요)
+> 1. 서버 접속 후 `sudo apt install certbot`, `sudo apt install python3-cerbot-nginx` 로 `cerbot` 설치!!
+> 2. `sudo certbot certonly --nginx` 로 인증서 발급
+> 3. 기존의 HTTP 포트인 80으로의 접속을 HTTPS의 포트로 redirect 시키기 위해 nginx의 설정을 바꿔줌 (이후 `sudo systemctl restart nginx.service`로 재시작 필요)
+> 4. AWS에서 방화벽 해제
 
 
+
+# 서버를 다시 열 때
+```
+cd /home/ubuntu/venvs/
+. myproject.sh
+
+sudo systemctl restart nginx
+sudo systemctl restart myproject.service
+
+주소 : 
+http://43.200.124.184/question/list/ 
+```
